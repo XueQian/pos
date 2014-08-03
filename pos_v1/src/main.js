@@ -3,12 +3,12 @@ function printInventory(inputs){
   var allPromotions = loadPromotions();
   var itemsNums = [];
   var actualPay = [];
-  for(var i = 0; i < allItems.length; i++){
+  for (var i = 0; i < allItems.length; i++){
        itemsNums[i] = 0;
        actualPay[i] = 0;
    }
-  for(var i = 0; i < inputs.length; i++){
-     for(var j = 0;j < allItems.length;j++){
+  for (var i = 0; i < inputs.length; i++){
+     for (var j = 0;j < allItems.length;j++){
         if (inputs[i].substring(0,10) === allItems[j].barcode){
           if (inputs[i].length > 10){
             itemsNums[j] = inputs[i].substr(11,1);}
@@ -18,11 +18,11 @@ function printInventory(inputs){
         }
      }
   var promotionPay = [];
-  for(var i = 0; i < allItems.length; i++){
-      for(var j = 0;j < allPromotions.length; j++)
-        if(allPromotions[j].type === 'BUY_TWO_GET_ONE_FREE'){
-          for(var k = 0; k < allPromotions[j].barcodes.length; k++){
-            if(allItems[i].barcode === allPromotions[j].barcodes[k]){
+  for (var i = 0; i < allItems.length; i++){
+      for (var j = 0;j < allPromotions.length; j++)
+        if (allPromotions[j].type === 'BUY_TWO_GET_ONE_FREE'){
+          for (var k = 0; k < allPromotions[j].barcodes.length; k++){
+            if (allItems[i].barcode === allPromotions[j].barcodes[k]){
                         actualPay[i] = ((parseInt(itemsNums[i]/3))*(allItems[i].price)*2+(itemsNums[i]%3)*(allItems[i].price));
                         break;
                       }
@@ -42,7 +42,7 @@ function printInventory(inputs){
   expectText += '----------------------\n';
   expectText += '挥泪赠送商品：\n';
   var totalPay = 0;
-  for(var i = 0; i < promotionPay.length; i++)  {
+  for (var i = 0; i < promotionPay.length; i++)  {
       if (promotionPay[i] != 0){
       expectText += '名称：'+allItems[i].name+'，数量：'+parseInt(itemsNums[i] / 3)+allItems[i].unit+'\n';
       totalPay += promotionPay[i];
@@ -50,7 +50,7 @@ function printInventory(inputs){
     }
   expectText += '----------------------\n';
   var totalPromotion = 0;
-  for(var i = 0; i < actualPay.length; i++){
+  for (var i = 0; i < actualPay.length; i++){
     totalPromotion += actualPay[i]; }
   expectText += '总计：'+totalPromotion.toFixed(2)+'(元)\n';
   expectText += '节省：'+totalPay.toFixed(2)+'(元)\n'

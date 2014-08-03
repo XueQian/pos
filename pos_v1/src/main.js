@@ -52,8 +52,6 @@ function printInventory(inputs){
   var totalPromotion = 0;
   for (var i = 0; i < actualPay.length; i++){
     totalPromotion += actualPay[i]; }
-  expectText += '总计：'+totalPromotion.toFixed(2)+'(元)\n';
-  expectText += '节省：'+totalPay.toFixed(2)+'(元)\n'
-  expectText += '**********************';
+  expectText += '总计：'+totalPromotion.toFixed(2)+'(元)\n'+'节省：'+totalPay.toFixed(2)+'(元)\n'+'**********************';s
   console.log(expectText);
   }
